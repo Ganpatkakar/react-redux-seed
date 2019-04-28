@@ -1,22 +1,41 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {CommonAction, TestAction} from '../actions/action'
+import React, { Component } from 'react';
+import myImage from "../assets/ganpat.jpg";
+import { connect } from 'react-redux';
+import {CommonAction, TestAction, Incrementer, Decrementer} from '../redux/actions'
 
 export class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
+        this.incrementer = this.incrementer.bind(this);
+        this.decrementer = this.decrementer.bind(this);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.CommonAction();
         this.props.TestAction();
     }
 
+    incrementer () {
+        this.props.Incrementer();
+    }
+
+    decrementer () {
+        this.props.Decrementer();
+    }
+
   render() {
     return (
-      <div>
-          App Loads Here
-      </div>
+        <React.Fragment>
+            <div>
+                App Loads Here
+            </div>
+            <div className={"inc-dec"}>
+                <button onClick={this.decrementer}>-</button>
+                <i className={"number"}>{this.props.state.number}</i>
+                <button onClick={this.incrementer}>+</button>
+            </div>
+            <img className={"kakar"} src={myImage} alt="Ganpat Kakar"/>
+        </React.Fragment>
     )
   }
 }
@@ -27,7 +46,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     CommonAction,
-    TestAction
+    TestAction,
+    Incrementer,
+    Decrementer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

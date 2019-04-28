@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import commonReducer from "./reducers/commonReducer";
 
-let initialState = {}
+let initialState = {};
 
-let middleware = [thunk]
+let middleware = [thunk];
 
 export default createStore(commonReducer, 
     initialState, 
