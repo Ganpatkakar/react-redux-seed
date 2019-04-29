@@ -15,9 +15,11 @@ export class App extends Component {
     }
 
     incrementer () {
+        return null;
     }
 
     decrementer () {
+        return null;
     }
 
   render() {
@@ -39,12 +41,10 @@ export class App extends Component {
 
 const mapStateToProps = (state) => ({
     state: state
-})
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        CommonAction : () => dispatch(CommonAction)
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    CommonAction : (data) => dispatch(CommonAction(data))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
