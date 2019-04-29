@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import myImage from "../assets/ganpat.jpg";
 import { connect } from 'react-redux';
-import {CommonAction, TestAction, Incrementer, Decrementer} from '../redux/actions'
+import {CommonAction} from '../redux/actions'
 
 export class App extends Component {
     constructor(props) {
@@ -11,16 +11,13 @@ export class App extends Component {
     }
 
     componentWillMount() {
-        this.props.CommonAction();
-        this.props.TestAction();
+        this.props.CommonAction(true);
     }
 
     incrementer () {
-        this.props.Incrementer();
     }
 
     decrementer () {
-        this.props.Decrementer();
     }
 
   render() {
@@ -44,11 +41,10 @@ const mapStateToProps = (state) => ({
     state: state
 })
 
-const mapDispatchToProps = {
-    CommonAction,
-    TestAction,
-    Incrementer,
-    Decrementer
+const mapDispatchToProps = (dispatch) => {
+    return {
+        CommonAction : () => dispatch(CommonAction)
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

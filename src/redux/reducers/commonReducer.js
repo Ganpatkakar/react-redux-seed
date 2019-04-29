@@ -1,24 +1,27 @@
-import { enums } from "../enums";
+import { INITIAL_STATE,
+    TEST_STATE,
+    INCREMENTER,
+    DECREMENTER} from "../enums";
 
 export default function commonReducer(state = {}, action) {
     switch (action.type) {
-        case enums.INITIAL_STATE:
+        case INITIAL_STATE:
             return {
                 ...state,
                 number: 0,
                 ready: action.payload
             };
-        case enums.TEST_STATE:
+        case TEST_STATE:
             return {
                 ...state,
                 userData: action.payload
             };
-        case enums.INCREMENTER:
+        case INCREMENTER:
             return {
                 ...state,
                 number: state.number + action.payload
             };
-        case enums.DECREMENTER:
+        case DECREMENTER:
             return {
                 ...state,
                 number: state.number - action.payload
